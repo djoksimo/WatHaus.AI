@@ -42,7 +42,7 @@ const currencies = [
   },
 ];
 
-class TextFields extends React.Component {
+class Form extends React.Component {
   state = {
     name: 'Cat in the Hat',
     age: '',
@@ -251,8 +251,8 @@ class TextFields extends React.Component {
   }
 }
 
-TextFields.propTypes = {
+Form.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(TextFields);
+export default withStyles(styles)(Form);
