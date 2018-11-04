@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Component }  from 'react';
+
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -12,24 +13,33 @@ const styles = {
     },
 };
 
-function Header(props) {
-  const { classes } = props;
+class Header extends React.Component {
 
-  return (
-      <div className={classes.root}>
-        <AppBar position="static">
-          <Toolbar>
-            <Typography variant="h6" color="inherit">
-            WatRes
-            </Typography>
-          </Toolbar>
-        </AppBar>
-      </div>
-  );
+  constructor (props) {
+      super(props);
+  }
+  render() {
+      const { classes } = this.props;
+      return (
+            <div className={classes.root}>
+                <AppBar position="static">
+                    <Toolbar>
+                        <Typography
+                            onClick={this.props.handleChange}
+                            variant="h6"
+                            color="inherit">
+                            WatRes
+                        </Typography>
+                    </Toolbar>
+                </AppBar>
+            </div>
+        );
+    }
 }
 
 Header.propTypes = {
     classes: PropTypes.object.isRequired,
+    handleChange: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(Header);
