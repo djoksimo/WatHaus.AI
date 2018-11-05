@@ -26,18 +26,21 @@ const styles = theme => ({
   },
   title: {
     display: 'block',
+    fontSize: '3em',
     marginTop: 'auto',
     marginBottom: 'auto'
-  },
-  button: {
-    margin: theme.spacing.unit,
-    marginTop: '2em'
   },
   extendedIcon: {
     marginRight: theme.spacing.unit,
   },
   subHeading: {
-    marginTop: '2em'
+    marginTop: '2em',
+    fontSize: '1.8em'
+  },
+  fact: {
+    fontSize: '1em',
+    marginTop: '2em',
+    marginBottom: '2em',
   }
 });
 
@@ -62,10 +65,13 @@ class Home extends React.Component {
           {!this.state.btnClicked &&
             <Paper className={classes.root} elevation={3}>
               <Typography className={classes.title} variant="h3" component="h3">
-                Welcome to WatRes
+                Welcome to WatHaus.AI
               </Typography>
               <Typography className={classes.subHeading} component="p">
-                Find the right housing for you with the power of MACHINE LEARNING
+                Find the right housing for you with the power of <strong>MACHINE LEARNING</strong>
+              </Typography>
+              <Typography className={classes.fact} component="p">
+                Haus in German means topographic and occupational name for someone who lived and worked in a great house.
               </Typography>
               <Button
                 onClick={this.handleChange}

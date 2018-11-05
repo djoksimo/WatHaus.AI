@@ -28,7 +28,7 @@ class Header extends React.Component {
                             onClick={this.props.handleChange}
                             variant="h6"
                             color="inherit">
-                            WatRes
+                            WatHaus.AI
                         </Typography>
                     </Toolbar>
                 </AppBar>
