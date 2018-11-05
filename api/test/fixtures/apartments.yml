@@ -6,8 +6,8 @@ one:
   longitude: 1.5
   best_trans_method: MyString
   total_cost: 1
-  indoor_features: MyText
-  nearby_features: MyText
+  indoor_features: MyString
+  nearby_features: MyString
 
 two:
   address: MyString
@@ -15,5 +15,5 @@ two:
   longitude: 1.5
   best_trans_method: MyString
   total_cost: 1
-  indoor_features: MyText
-  nearby_features: MyText
+  indoor_features: MyString
+  nearby_features: MyString

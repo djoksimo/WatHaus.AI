@@ -4,12 +4,12 @@ one:
   preferred_transportation: MyString
   satisfaction: 1.5
   num_roomates: 1
-  reason: MyString
-  bad_experiences: MyText
+  reasons: 
+  bad_experiences: 
 
 two:
   preferred_transportation: MyString
   satisfaction: 1.5
   num_roomates: 1
-  reason: MyString
-  bad_experiences: MyText
+  reasons: 
+  bad_experiences: 

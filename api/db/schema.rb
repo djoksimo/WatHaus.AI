@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_04_224206) do
+ActiveRecord::Schema.define(version: 2018_11_05_230302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(version: 2018_11_04_224206) do
     t.float "longitude"
     t.string "best_trans_method"
     t.integer "total_cost"
-    t.text "indoor_features", default: [], array: true
-    t.text "nearby_features", default: [], array: true
+    t.string "indoor_features", default: [], array: true
+    t.string "nearby_features", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(version: 2018_11_04_224206) do
     t.string "preferred_transportation"
     t.float "satisfaction"
     t.integer "num_roomates"
-    t.string "reason"
-    t.text "bad_experiences", default: [], array: true
+    t.text "reasons"
+    t.text "bad_experiences"
     t.bigint "apartment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -97,8 +97,8 @@ module Api
           :longitude,
           :best_trans_method,
           :total_cost,
-          :indoor_features,
-          :nearby_features
+          :indoor_features => [],
+          :nearby_features => []
         )
       end
     end

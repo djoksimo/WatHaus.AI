@@ -27,8 +27,8 @@ module Api
               status: 'ERROR',
               message:'person not saved',
               data: @person.errors
-              },
-              status: :unprocessable_entity
+            },
+            status: :unprocessable_entity
           end
         end
       end
@@ -50,13 +50,17 @@ module Api
         if correct_secret_api_key?
           @person = person.find(params[:id])
           if @person.update_attributes(person_params)
-            render json: {status: 'SUCCESS', message:'Updated person', data:@person},status: :ok
+            render json: {
+              status: 'SUCCESS',
+              message:'Updated person',
+              data: @person
+            },status: :ok
           else
             render json: {
               status: 'ERROR',
-               message:'person not updated',
-               data:@apartment.errors
-              },
+              message:'person not updated',
+              data:@apartment.errors
+            },
             status: :unprocessable_entity
             head :no_content
           end
@@ -72,9 +76,10 @@ module Api
           @person.destroy
           render json: {
             status: 'SUCCESS',
-             message:'Deleted person',
-             data: @person},
-            status: :ok
+            message:'Deleted person',
+            data: @person
+          },
+          status: :ok
         else
           head :unauthorized
         end
@@ -97,8 +102,8 @@ module Api
           :longitude,
           :best_trans_method,
           :total_cost,
-          :indoor_features,
-          :nearby_features
+          indoor_features: [],
+          nearby_features: []
         )
       end
     end
