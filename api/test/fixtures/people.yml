@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  preferred_transportation: MyString
+  satisfaction: 1.5
+  num_roomates: 1
+  reason: MyString
+  bad_experiences: MyText
+
+two:
+  preferred_transportation: MyString
+  satisfaction: 1.5
+  num_roomates: 1
+  reason: MyString
+  bad_experiences: MyText
