@@ -13,25 +13,71 @@ module Api
 
       # POST /apartments
       def create
-        @apartment = Apartment.create!(apartment_params)
-        json_response(@apartment, :created)
+        if correct_secret_api_key?
+          @apartment = Apartment.new(apartment_params)
+          if @apartment.save
+            render json: {
+              status: 'SUCCESS',
+              message:'Saved Apartment',
+              data:@apartment
+            },
+            status: :ok
+          else
+            render json: {
+              status: 'ERROR',
+              message:'Apartment not saved',
+              data: @apartment.errors
+              },
+              status: :unprocessable_entity
+          end
+        end
       end
 
       # GET /apartments/:id
       def show
-        json_response(@apartment)
+         @apartment = Apartment.find(params[:id])
+         render json: {
+           status: 'SUCCESS',
+           message:'Loaded Apartment',
+           data: @apartment
+         },
+         status: :ok
       end
+
 
       # PATCH /apartment/:id
       def update
-        @apartment.update(apartment_params)
-        head :no_content
+        if correct_secret_api_key?
+          @apartment = Apartment.find(params[:id])
+          if @apartment.update_attributes(apartment_params)
+            render json: {status: 'SUCCESS', message:'Updated apartment', data:@apartment},status: :ok
+          else
+            render json: {
+              status: 'ERROR',
+               message: 'Apartment not updated',
+               data: @apartment.errors
+              },
+            status: :unprocessable_entity
+            head :no_content
+          end
+        else
+          head :unauthorized
+        end
       end
 
       # DELETE /todos/:id
       def destroy
-        @apartment.destroy
-        head :no_content
+        if correct_secret_api_key?
+          @apartment = Apartment.find(params[:id])
+          @apartment.destroy
+          render json: {
+            status: 'SUCCESS',
+             message:'Deleted Apartment',
+             data: @apartment},
+            status: :ok
+        else
+          head :unauthorized
+        end
       end
 
       def correct_secret_api_key?
@@ -45,7 +91,15 @@ module Api
 
       def apartment_params
         # whitelist params
-        params.permit(:address, :latitude, :longitude, :best_trans_method, :total_cost, :indoor_features, :nearby_features)
+        params.permit(
+          :address,
+          :latitude,
+          :longitude,
+          :best_trans_method,
+          :total_cost,
+          :indoor_features,
+          :nearby_features
+        )
       end
     end
   end

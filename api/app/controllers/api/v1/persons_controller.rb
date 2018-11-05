@@ -5,33 +5,79 @@ module Api
 
       include Response
 
-      # GET /apartments
+      # GET /persons
       def index
-        @persons = Person.all
+        @persons = person.all
         json_response(@persons)
       end
 
-      # POST /apartments
+      # POST /persons
       def create
-        @person = Person.create!(todo_params)
-        json_response(@person, :created)
+        if correct_secret_api_key?
+          @person = person.new(person_params)
+          if @person.save
+            render json: {
+              status: 'SUCCESS',
+              message:'Saved person',
+              data:@person
+            },
+            status: :ok
+          else
+            render json: {
+              status: 'ERROR',
+              message:'person not saved',
+              data: @person.errors
+              },
+              status: :unprocessable_entity
+          end
+        end
       end
 
-      # GET /apartments/:id
+      # GET /persons/:id
       def show
-        json_response(@person)
+         @person = person.find(params[:id])
+         render json: {
+           status: 'SUCCESS',
+           message:'Loaded person',
+           data: @person
+         },
+         status: :ok
       end
 
-      # PATCH /apartment/:id
+
+      # PATCH /person/:id
       def update
-        @person.update(todo_params)
-        head :no_content
+        if correct_secret_api_key?
+          @person = person.find(params[:id])
+          if @person.update_attributes(person_params)
+            render json: {status: 'SUCCESS', message:'Updated person', data:@person},status: :ok
+          else
+            render json: {
+              status: 'ERROR',
+               message:'person not updated',
+               data:@apartment.errors
+              },
+            status: :unprocessable_entity
+            head :no_content
+          end
+        else
+          head :unauthorized
+        end
       end
 
       # DELETE /todos/:id
       def destroy
-        @person.destroy
-        head :no_content
+        if correct_secret_api_key?
+          @person = person.find(params[:id])
+          @person.destroy
+          render json: {
+            status: 'SUCCESS',
+             message:'Deleted person',
+             data: @person},
+            status: :ok
+        else
+          head :unauthorized
+        end
       end
 
       def correct_secret_api_key?
@@ -43,13 +89,17 @@ module Api
         end
       end
 
-      def apartment_params
+      def person_params
         # whitelist params
-        apartment.permit(:address, :latitude, :longitude, :best_trans_method, :total_cost, :indoor_features, :nearby_features)
-      end
-
-      def set_apartment
-        @person = Person.find(params[:id])
+        params.permit(
+          :address,
+          :latitude,
+          :longitude,
+          :best_trans_method,
+          :total_cost,
+          :indoor_features,
+          :nearby_features
+        )
       end
     end
   end
