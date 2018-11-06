@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2018_11_06_002028) do
     t.float "longitude"
     t.string "best_trans_method"
     t.integer "total_cost"
+    t.float "satisfaction"
     t.string "indoor_features", default: [], array: true
     t.string "nearby_features", default: [], array: true
     t.bigint "habitants_id"
@@ -31,7 +32,6 @@ ActiveRecord::Schema.define(version: 2018_11_06_002028) do
 
   create_table "habitants", force: :cascade do |t|
     t.string "preferred_transportation"
-    t.float "satisfaction"
     t.integer "num_roomates"
     t.string "reasons", default: [], array: true
     t.string "bad_experiences", default: [], array: true
