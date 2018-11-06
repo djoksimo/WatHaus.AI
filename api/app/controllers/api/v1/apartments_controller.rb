@@ -97,9 +97,10 @@ module Api
           :longitude,
           :best_trans_method,
           :total_cost,
+          :satisfaction,
           :indoor_features => [],
           :nearby_features => [],
-          :habitants => [
+          habitants: [
             :preferred_transportation,
             :satisfaction,
             :num_roomates,

@@ -1,20 +1,20 @@
 module Api
   module V1
-    class habitantsController < ApplicationController
+    class HabitantsController < ApplicationController
       # before_action :set_todo, only: [:show, :update, :destroy]
 
       include Response
 
       # GET /habitants
       def index
-        @habitants = habitant.all
+        @habitants = Habitant.all
         json_response(@habitants)
       end
 
       # POST /habitants
       def create
         if correct_secret_api_key?
-          @habitant = habitant.new(habitant_params)
+          @habitant = Habitant.new(habitant_params)
           if @habitant.save
             render json: {
               status: 'SUCCESS',
@@ -35,7 +35,7 @@ module Api
 
       # GET /habitants/:id
       def show
-         @habitant = habitant.find(params[:id])
+         @habitant = Habitant.find(params[:id])
          render json: {
            status: 'SUCCESS',
            message:'Loaded habitant',
@@ -48,7 +48,7 @@ module Api
       # PATCH /habitant/:id
       def update
         if correct_secret_api_key?
-          @habitant = habitant.find(params[:id])
+          @habitant = Habitant.find(params[:id])
           if @habitant.update_attributes(habitant_params)
             render json: {
               status: 'SUCCESS',
@@ -72,7 +72,7 @@ module Api
       # DELETE /todos/:id
       def destroy
         if correct_secret_api_key?
-          @habitant = habitant.find(params[:id])
+          @habitant = Habitant.find(params[:id])
           @habitant.destroy
           render json: {
             status: 'SUCCESS',
