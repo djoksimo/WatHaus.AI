@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  apartment: one
+  preferred_transportation: MyString
+  satisfaction: 1.5
+  num_roomates: 1
+  reasons: MyString
+  bad_experiences: MyString
+
+two:
+  apartment: two
+  preferred_transportation: MyString
+  satisfaction: 1.5
+  num_roomates: 1
+  reasons: MyString
+  bad_experiences: MyString

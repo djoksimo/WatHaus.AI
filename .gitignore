@@ -96,3 +96,6 @@ typings/
 
 # Serverless directories
 .serverless
+
+# Environment Variables
+api/config/secret.yml

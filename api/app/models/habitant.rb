@@ -1,0 +1,2 @@
+class Habitant < ApplicationRecord
+end
