@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_05_230302) do
+ActiveRecord::Schema.define(version: 2018_11_06_002028) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,21 +23,20 @@ ActiveRecord::Schema.define(version: 2018_11_05_230302) do
     t.integer "total_cost"
     t.string "indoor_features", default: [], array: true
     t.string "nearby_features", default: [], array: true
+    t.bigint "habitants_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["habitants_id"], name: "index_apartments_on_habitants_id"
   end
 
-  create_table "people", force: :cascade do |t|
+  create_table "habitants", force: :cascade do |t|
     t.string "preferred_transportation"
     t.float "satisfaction"
     t.integer "num_roomates"
-    t.text "reasons"
-    t.text "bad_experiences"
-    t.bigint "apartment_id"
+    t.string "reasons", default: [], array: true
+    t.string "bad_experiences", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["apartment_id"], name: "index_people_on_apartment_id"
   end
 
-  add_foreign_key "people", "apartments"
 end

@@ -9,8 +9,6 @@
 # production
 /build
 
-api/config/secret.yml
-
 # misc
 .DS_Store
 .env.local

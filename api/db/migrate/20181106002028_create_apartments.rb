@@ -8,6 +8,7 @@ class CreateApartments < ActiveRecord::Migration[5.2]
       t.integer :total_cost
       t.string :indoor_features, array: true, default: []
       t.string :nearby_features, array: true, default: []
+      t.references :habitants, array: true, default: []
 
       t.timestamps
     end

@@ -98,7 +98,14 @@ module Api
           :best_trans_method,
           :total_cost,
           :indoor_features => [],
-          :nearby_features => []
+          :nearby_features => [],
+          :habitants => [
+            :preferred_transportation,
+            :satisfaction,
+            :num_roomates,
+            :reasons => [],
+            :bad_experiences => [],
+          ]
         )
       end
     end

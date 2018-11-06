@@ -1,64 +1,64 @@
 module Api
   module V1
-    class PersonsController < ApplicationController
+    class habitantsController < ApplicationController
       # before_action :set_todo, only: [:show, :update, :destroy]
 
       include Response
 
-      # GET /persons
+      # GET /habitants
       def index
-        @persons = person.all
-        json_response(@persons)
+        @habitants = habitant.all
+        json_response(@habitants)
       end
 
-      # POST /persons
+      # POST /habitants
       def create
         if correct_secret_api_key?
-          @person = person.new(person_params)
-          if @person.save
+          @habitant = habitant.new(habitant_params)
+          if @habitant.save
             render json: {
               status: 'SUCCESS',
-              message:'Saved person',
-              data:@person
+              message:'Saved habitant',
+              data:@habitant
             },
             status: :ok
           else
             render json: {
               status: 'ERROR',
-              message:'person not saved',
-              data: @person.errors
+              message:'habitant not saved',
+              data: @habitant.errors
             },
             status: :unprocessable_entity
           end
         end
       end
 
-      # GET /persons/:id
+      # GET /habitants/:id
       def show
-         @person = person.find(params[:id])
+         @habitant = habitant.find(params[:id])
          render json: {
            status: 'SUCCESS',
-           message:'Loaded person',
-           data: @person
+           message:'Loaded habitant',
+           data: @habitant
          },
          status: :ok
       end
 
 
-      # PATCH /person/:id
+      # PATCH /habitant/:id
       def update
         if correct_secret_api_key?
-          @person = person.find(params[:id])
-          if @person.update_attributes(person_params)
+          @habitant = habitant.find(params[:id])
+          if @habitant.update_attributes(habitant_params)
             render json: {
               status: 'SUCCESS',
-              message:'Updated person',
-              data: @person
+              message:'Updated habitant',
+              data: @habitant
             },status: :ok
           else
             render json: {
               status: 'ERROR',
-              message:'person not updated',
+              message:'habitant not updated',
               data:@apartment.errors
             },
             status: :unprocessable_entity
@@ -72,12 +72,12 @@ module Api
       # DELETE /todos/:id
       def destroy
         if correct_secret_api_key?
-          @person = person.find(params[:id])
-          @person.destroy
+          @habitant = habitant.find(params[:id])
+          @habitant.destroy
           render json: {
             status: 'SUCCESS',
-            message:'Deleted person',
-            data: @person
+            message:'Deleted habitant',
+            data: @habitant
           },
           status: :ok
         else
@@ -94,16 +94,14 @@ module Api
         end
       end
 
-      def person_params
+      def habitant_params
         # whitelist params
         params.permit(
-          :address,
-          :latitude,
-          :longitude,
-          :best_trans_method,
-          :total_cost,
-          indoor_features: [],
-          nearby_features: []
+          :preferred_transportation,
+          :satisfaction,
+          :num_roomates,
+          :reasons => [],
+          :bad_experiences => [],
         )
       end
     end
