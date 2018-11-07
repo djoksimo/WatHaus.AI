@@ -1,6 +1,6 @@
 # WatRes
 
-**Web application that determines the best student housing option for University of Waterloo based on a person's preferences**
+**Web application that determines the best student housing option for University of Waterloo students based on a person's preferences**
 
 **Data was collected via Google Forms with over 100 entries on students' experiences with their housing near campus**
 
@@ -27,11 +27,11 @@
 5. Run ```rails server``` in api directory to locally launch web server
 6. Get REST api routes by running ```rails routes``` in api directory
 
-### Coming soon
+### TODOs
 
-* Deployment on AWS EC2 with nginx server on [mountainviews.ca](https://mountainview.ca)
+* Deployment on AWS EC2 with Nginx server on [mountainviews.ca](https://mountainview.ca)
 * Securing application using SSL certificates
-* More data from University of Waterloo students
+* Collect more data from University of Waterloo students
 * Improvde UI/UX
 
 ### Upcoming features
