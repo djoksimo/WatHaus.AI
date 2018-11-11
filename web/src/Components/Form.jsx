@@ -145,7 +145,7 @@ class Form extends React.Component {
 
   submitForm = event => {
     this.setState({formSubmitted: true});
-    axios.get(`http://localhost:3000/api/v1/apartments`)
+    axios.get(`http://206.81.4.8:3000/api/v1/apartments`)
       .then(res => {
       this.setState({ rawData: res.data });
     }).then( () => {
