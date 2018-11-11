@@ -81,10 +81,13 @@ module Api
       end
 
       def correct_secret_api_key?
+        puts "REQUEST.headers: " + request.headers['Authorization'].to_s
+        puts "SECRET_API_KEY: " + ENV['SECRET_API_KEY'].to_s
+
         if request.headers['Authorization'] == ENV['SECRET_API_KEY']
           true
         else
-          head :unauthorized
+          render json: :unauthorized
           false
         end
       end
