@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: api_production
-  username: api
+  username: root
   password: <%= ENV['API_DATABASE_PASSWORD'] %>
