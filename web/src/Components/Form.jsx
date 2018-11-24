@@ -145,7 +145,7 @@ class Form extends React.Component {
 
   submitForm = event => {
     this.setState({formSubmitted: true});
-    axios.get(`http://206.81.4.8:3000/api/v1/apartments`)
+    axios.get(`https://api.mountainviews.ca/api/v1/apartments`)
       .then(res => {
       this.setState({ rawData: res.data });
     }).then( () => {
@@ -164,36 +164,50 @@ class Form extends React.Component {
 
        */
 
+      let numFeatures = [];
+
       for (let i = 0; i < apartments.length; i++) {
+        maxFeatures = 0;
           if (apartments[i].total_cost >= this.state.minPrice && apartments[i].total_cost <= this.state.maxPrice) {
             if (apartments[i].satisfaction > max) {
-              // let tempFeatureCount = 0;
-              // for (let j = 0; j < apartments[i].indoor_features.length; j++) {
-              //   if (this.state.features.includes(apartments[i].indoor_features[j])){
-              //     if (tempFeatureCount > maxFeatures) {
-              //       maxFeatures = tempFeatureCount;
-              //     }
-              //   }
-              // }
-              // if (maxFeatures > ) {
               max = apartments[i].satisfaction;
-              this.setState({satisfaction: apartments[i].satisfaction});
-              this.setState({address: apartments[i].address});
-              this.setState({indoorFeatures: apartments[i].indoor_features});
-              this.setState({nearbyFeatures: apartments[i].nearby_features});
-              this.setState({preferredTrans: apartments[i].best_trans_method});
-              this.setState({rentCost: apartments[i].total_cost});
-              candidate = apartments[i];
-              console.log(candidate);
-
+              for (let j = 0; j < apartments[i].indoor_features.length; j++) {
+                if (this.state.indoorFeatures.includes(apartments[i].indoorFeatures[j])) {
+                  maxFeatures++;
+                  index = i;
+                }
+              }
+              numFeatures.push({
+                apartment: apartments[i],
+                count: maxFeatures
+              });
             }
           }
         }
-        setTimeout((() => this.setState({dataLoaded: true})), 3000);
+
+      let tempMax = 0;
+      let index = 0;
+      for (let i = 0; i < numFeatures.length; i++) {
+        if (numFeatures[i].count > tempMax) {
+          tempMax = numFeatures[i].count;
+          index = i;
+        }
+      }
+
+      this.setState({satisfaction: apartments[index].satisfaction});
+      this.setState({address: apartments[index].address});
+      this.setState({indoorFeatures: apartments[index].indoor_features});
+      this.setState({nearbyFeatures: apartments[index].nearby_features});
+      this.setState({preferredTrans: apartments[index].best_trans_method});
+      this.setState({rentCost: apartments[index].total_cost});
+      candidate = apartments[index];
+      console.log(candidate);
+      setTimeout((() => this.setState({dataLoaded: true})), 2000);
 
       }
     );
   };
+
 
   handleMinPrice = event => {
     console.log(event.target.value);
@@ -393,7 +407,7 @@ class Form extends React.Component {
           <Paper className={classes.paper} elevation={3}>
             {!this.state.dataLoaded && this.state.formSubmitted &&
             <div>
-              <h4>Processing data using blockchain and TensorFlow.js....</h4>
+              <h4>Processing and getting data from api.mountainviews.ca...</h4>
             </div>
             }
             {this.state.dataLoaded && this.state.formSubmitted &&
