@@ -11,6 +11,7 @@ import HomeIcon from '@material-ui/icons/Home';
 
 
 
+
 const styles = theme => ({
   root: {
     ...theme.mixins.gutters(),
@@ -63,6 +64,7 @@ const styles = theme => ({
     marginLeft: 'auto',
     marginRight: 'auto',
     marginTop: '3em',
+    flexWrap: 'wrap',
     justifyContent: 'space-between'
 },
   maps: {

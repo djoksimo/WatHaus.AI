@@ -172,9 +172,8 @@ class Form extends React.Component {
             if (apartments[i].satisfaction > max) {
               max = apartments[i].satisfaction;
               for (let j = 0; j < apartments[i].indoor_features.length; j++) {
-                if (this.state.indoorFeatures.includes(apartments[i].indoorFeatures[j])) {
+                if (this.state.indoorFeatures.includes(apartments[i].indoor_features[j])) {
                   maxFeatures++;
-                  index = i;
                 }
               }
               numFeatures.push({
@@ -188,6 +187,8 @@ class Form extends React.Component {
       let tempMax = 0;
       let index = 0;
       for (let i = 0; i < numFeatures.length; i++) {
+        console.log(numFeatures[i].apartment.address);
+        console.log(numFeatures[i].apartment.satisfaction);
         if (numFeatures[i].count > tempMax) {
           tempMax = numFeatures[i].count;
           index = i;
@@ -289,7 +290,7 @@ class Form extends React.Component {
               <FormLabel
                 className={classes.question}
                 component="legend">
-                I would like to have:
+                Preferred Ameneties:
               </FormLabel>
               <FormGroup>
                 <FormControlLabel
