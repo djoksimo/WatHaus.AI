@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import 'typeface-roboto';
-import Home from "./Components/Home";
+import Home from "./Components/Home/Home";
 
 
 class App extends Component {

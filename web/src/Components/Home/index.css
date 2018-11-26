@@ -1,0 +1,7 @@
+@media (max-width: 992px) {
+    iframe {
+        width: 18em;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

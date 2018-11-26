@@ -20,8 +20,8 @@ import Button from "@material-ui/core/Button/Button";
 import axios from 'axios';
 import HomeIcon from '@material-ui/icons/Home';
 import Typography from "@material-ui/core/Typography/Typography";
-import Result from "./Result";
-
+import Result from "../Result";
+import "./index.css";
 
 
 const styles = theme => ({
@@ -41,7 +41,7 @@ const styles = theme => ({
   },
   paper: {
     padding: theme.spacing.unit * 2,
-    width: '32em',
+    width: theme.spacing.unit * 32,
     marginLeft: 'auto',
     marginRight: 'auto',
     textAlign: 'left',
@@ -178,19 +178,22 @@ class Form extends React.Component {
               }
               numFeatures.push({
                 apartment: apartments[i],
-                count: maxFeatures
+                count: maxFeatures,
+                satisfaction: apartments[i].satisfaction
               });
             }
           }
         }
 
-      let tempMax = 0;
+      let tempFeatureMax = 0;
+      let tempSatisfactionMax = 0;
       let index = 0;
       for (let i = 0; i < numFeatures.length; i++) {
         console.log(numFeatures[i].apartment.address);
         console.log(numFeatures[i].apartment.satisfaction);
-        if (numFeatures[i].count > tempMax) {
-          tempMax = numFeatures[i].count;
+        if (numFeatures[i].count >= tempFeatureMax && numFeatures[i].satisfaction > tempSatisfactionMax) {
+          tempFeatureMax = numFeatures[i].count;
+          tempSatisfactionMax = numFeatures[i].satisfaction;
           index = i;
         }
       }
@@ -405,13 +408,8 @@ class Form extends React.Component {
           </Paper>
         </Grid>
         <Grid item lg={12}>
+          {this.state.formSubmitted &&
           <Paper className={classes.paper} elevation={3}>
-            {!this.state.dataLoaded && this.state.formSubmitted &&
-            <div>
-              <h4>Processing and getting data from api.mountainviews.ca...</h4>
-            </div>
-            }
-            {this.state.dataLoaded && this.state.formSubmitted &&
             <Result
               rating={this.state.satisfaction}
               address={this.state.address}
@@ -419,8 +417,9 @@ class Form extends React.Component {
               indoorFeatures={this.state.indoorFeatures}
               preferredTrans={this.state.preferredTrans}
               rentCost={this.state.rentCost}
-            />}
+            />
           </Paper>
+          }
         </Grid>
 
       </Grid>

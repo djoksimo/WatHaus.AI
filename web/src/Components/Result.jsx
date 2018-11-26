@@ -36,7 +36,7 @@ class Result extends React.Component {
 
     return (
       <div>
-        <h2>Data pulled from server using artificial intelligence:</h2>
+        <h2>Best Match:</h2>
         <h4>Address: <span><strong>{address}</strong></span></h4>
         <h4>Satisfaction:
           <span className={classes.stars}>
