@@ -2,7 +2,7 @@
 
 **Web application that determines the best student housing option for University of Waterloo students based on a person's preferences**
 
-**Data was collected via Google Forms with over 100 entries on students' experiences with their housing near campus**
+**Data was collected via Google Forms from over 300 students**
 
 ### Stack
 
