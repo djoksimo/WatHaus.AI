@@ -34,8 +34,11 @@
 * Collect more data from University of Waterloo students
 * Improvde UI/UX
 
-### Upcoming features
+### MVP Tasks
 
 * Sentiment analysis in Ruby to judge bad experiences reported by students
 * Get images based on apartment addresses using Google APIs
 * Add form for collecting apartment satisfaction data to improve model accuracy
+* Automate malarkey removal from Google Form data
+
+**Contact djoksimo@uwaterloo.ca for Heroku, CI/CD, and Security information**
