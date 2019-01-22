@@ -1,4 +1,4 @@
-import React, { Component }  from 'react';
+import React from 'react';
 
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -14,10 +14,6 @@ const styles = {
 };
 
 class Header extends React.Component {
-
-  constructor (props) {
-      super(props);
-  }
   render() {
       const { classes } = this.props;
       return (

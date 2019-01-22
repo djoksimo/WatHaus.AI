@@ -165,7 +165,7 @@ DEPENDENCIES
   capistrano-rails (~> 1.2)
   capistrano-rvm
   listen (>= 3.0.5, < 3.2)
-  pg (>= 0.18, < 2.0)
+  pg
   puma (~> 3.11)
   rack-cors
   rails (~> 5.2.1)

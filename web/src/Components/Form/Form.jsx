@@ -1,25 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import MenuItem from '@material-ui/core/MenuItem';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormLabel from '@material-ui/core/FormLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
 import TextField from '@material-ui/core/TextField';
-// import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Paper from "@material-ui/core/Paper/Paper";
-import InputRange from 'react-input-range';
-// import HomeIcon from "@material-ui/core/SvgIcon/SvgIcon";
 import Button from "@material-ui/core/Button/Button";
 import axios from 'axios';
 import HomeIcon from '@material-ui/icons/Home';
-import Typography from "@material-ui/core/Typography/Typography";
 import Result from "../Result";
 import "./index.css";
 
@@ -85,18 +79,9 @@ const styles = theme => ({
     verticalAlign: 'middle',
     marginRight: theme.spacing.unit,
   },
-  // formControlLabel: {
-  //   fontSize: '0.8em'
-  // },
-  // formControlLabelRoot: {
-  //   fontSize: '0.8em'
-  // },
   question: {
     fontSize: '0.4em'
   },
-  // checkLabel: {
-  //   fontSize: '0.7em'
-  // }
 });
 
 class Form extends React.Component {
@@ -130,13 +115,10 @@ class Form extends React.Component {
   }
 
   selectTransportation = event => {
-    console.log(event.target.value);
     this.setState({ transportationValue: event.target.value });
   };
 
   selectFeature = name => event => {
-    console.log(event.target.value);
-    console.log(event.target.checked);
     const features = this.state.features;
     features.push(event.target.value);
     this.setState({features: features});
@@ -145,23 +127,19 @@ class Form extends React.Component {
 
   submitForm = event => {
     this.setState({formSubmitted: true});
-    axios.get(`https://api.mountainviews.ca/api/v1/apartments`)
+    axios.get(`https://wathaus-api.herokuapp.com/api/v1/apartments`)
       .then(res => {
       this.setState({ rawData: res.data });
     }).then( () => {
         let apartments = this.state.rawData;
-        let candidate  = {};
         let max = 0;
         let maxFeatures = 0;
-        console.log(this.state.features);
       /**
        * @param apartments
        * @param apartments.total_cost
        * @param apartments.nearby_features
        * @param apartments.indoor_features
        * @param apartments.best_trans_method
-
-
        */
 
       let numFeatures = [];
@@ -189,8 +167,6 @@ class Form extends React.Component {
       let tempSatisfactionMax = 0;
       let index = 0;
       for (let i = 0; i < numFeatures.length; i++) {
-        console.log(numFeatures[i].apartment.address);
-        console.log(numFeatures[i].apartment.satisfaction);
         if (numFeatures[i].count >= tempFeatureMax && numFeatures[i].satisfaction > tempSatisfactionMax) {
           tempFeatureMax = numFeatures[i].count;
           tempSatisfactionMax = numFeatures[i].satisfaction;
@@ -204,21 +180,14 @@ class Form extends React.Component {
       this.setState({nearbyFeatures: apartments[index].nearby_features});
       this.setState({preferredTrans: apartments[index].best_trans_method});
       this.setState({rentCost: apartments[index].total_cost});
-      candidate = apartments[index];
-      console.log(candidate);
-      setTimeout((() => this.setState({dataLoaded: true})), 2000);
-
-      }
-    );
+    });
   };
 
 
   handleMinPrice = event => {
-    console.log(event.target.value);
     this.setState({ minPrice: event.target.value});
   };
   handleMaxPrice = event => {
-    console.log(event.target.value);
     this.setState({maxPrice: event.target.value});
   };
 
@@ -270,21 +239,33 @@ class Form extends React.Component {
         </Grid>
         <Grid item lg={12}>
           <Paper className={classes.paper} elevation={3}>
-            <div>
-              Minimum Price: <input
+            <TextField
+              id="min-price"
+              label="Minimum Price:"
               type="number"
               name="min-price"
               value={this.state.minPrice}
-              onChange={this.handleMinPrice}/>
-            </div>
+              onChange={this.handleMinPrice}
+              className={classes.textField}
+              InputLabelProps={{
+                shrink: true,
+              }}
+              margin="normal"
+            />
             <br/>
-            <div>
-              Maximum Price: <input
+            <TextField
+              id="max-price"
+              label="Maximum Price:"
               type="number"
               name="max-price"
               value={this.state.maxPrice}
-              onChange={this.handleMaxPrice}/>
-            </div>
+              onChange={this.handleMaxPrice}
+              className={classes.textField}
+              InputLabelProps={{
+                shrink: true,
+              }}
+              margin="normal"
+            />
           </Paper>
         </Grid>
         <Grid item lg={12}>

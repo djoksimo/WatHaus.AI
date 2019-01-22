@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from "@material-ui/core";
-import Paper from "@material-ui/core/Paper/Paper";
 import StarRatings from '../../node_modules/react-star-ratings';
 
 const styles = theme => ({
@@ -41,20 +40,24 @@ class Result extends React.Component {
         <h4>Satisfaction:
           <span className={classes.stars}>
             <StarRatings
-            rating={rating}
+            rating={rating / 2}
             starDimension={'20px'}
             starRatedColor="black"
-            numberOfStars={10}
+            numberOfStars={5}
             name='rating'/>
           </span>
         </h4>
         <h4>Near <strong>{address}</strong>:</h4>
         <ul>
-          {nearbyFeatures.map(feature =>   <li>{feature}</li>)}
+          {nearbyFeatures.map(
+              (feature, index) => <li key={index}>{feature}</li>
+          )}
         </ul>
         <h4><strong>{address}</strong> comes with:</h4>
         <ul>
-          {indoorFeatures.map(feature =>   <li>{feature}</li>)}
+          {indoorFeatures.map(
+              (feature, index) => <li key={index}>{feature}</li>)
+          }
         </ul>
         <h4>Total Cost with Utilities: <span><strong>{rentCost}</strong></span></h4>
         <h4>Popular Method of Transportation: <span><strong>{preferredTrans}</strong></span></h4>
