@@ -1,4 +1,4 @@
-# [WatHaus.AI](mountainviews.ca)
+# [WatHaus.AI](https://wathaus-web.herokuapp.com/)
 
 **Web application that determines the best student housing option for University of Waterloo students based on a person's preferences**
 
