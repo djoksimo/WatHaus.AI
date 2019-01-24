@@ -1,18 +1,13 @@
 # [WatHaus.AI](https://wathaus-web.herokuapp.com/)
 
+<img src="http://img.shields.io/liberapay/receives/djoksimo.svg?logo=liberapay">
+
 **Web application that determines the best student housing option for University of Waterloo students based on a person's preferences**
 
 **Data was collected via Google Forms from over 300 students**
 
-### Stack
-
-* React.JS
-* Ruby on Rails API
-* PostgreSQL
-
 ### Prerequisites
 
-* PostgreSQL v10.x
 * Ruby on Rails v 5.x
 * Node.js v8.x
 
@@ -27,15 +22,13 @@
 5. Run ```rails server``` in api directory to locally launch web server
 6. Get REST api routes by running ```rails routes``` in api directory
 
-### TODOs
+### TODOs:
 
-* Deployment on AWS EC2 with Nginx server on [mountainviews.ca](https://mountainview.ca)
-* Securing application using SSL certificates
-* Collect more data from University of Waterloo students
-* Improvde UI/UX
-
-### MVP Tasks
-
+* Deployment on Google Kubernetes Engine with Nginx reverse proxy and Loading Balancing service
+* Web scrapers to collect student housing satisfaction data
+* Scale to include other Canadian universities and colleges
+* Improve UI/UX
+* Fix Docker containerization configuration
 * Sentiment analysis in Ruby to judge bad experiences reported by students
 * Get images based on apartment addresses using Google APIs
 * Add form for collecting apartment satisfaction data to improve model accuracy
