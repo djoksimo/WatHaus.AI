@@ -1,10 +1,16 @@
 # [WatHaus.AI](https://wathaus-web.herokuapp.com/)
 
-<img src="http://img.shields.io/liberapay/receives/djoksimo.svg?logo=liberapay">
-
 **Web application that determines the best student housing option for University of Waterloo students based on a person's preferences**
 
 **Data was collected via Google Forms from over 300 students**
+
+#### Satisfaction by Region
+
+![satisfaction](assets/satisfaction-region.png)
+
+#### Price by Region
+
+![price](assets/price-region.png)
 
 ### Prerequisites
 
@@ -24,14 +30,15 @@
 
 ### TODOs:
 
-* Deployment on Google Kubernetes Engine with Nginx reverse proxy and Loading Balancing service
-* Web scrapers to collect student housing satisfaction data
-* Scale to include other Canadian universities and colleges
-* Improve UI/UX
-* Fix Docker containerization configuration
-* Sentiment analysis in Ruby to judge bad experiences reported by students
-* Get images based on apartment addresses using Google APIs
-* Add form for collecting apartment satisfaction data to improve model accuracy
-* Automate malarkey removal from Google Form data
+- [ ] Deployment on Google Kubernetes Engine 
+- [ ] Web scrapers to collect student housing satisfaction data
+- [ ] Scale to include other Canadian universities and colleges
+- [ ] Improve UI/UX
+- [ ] Account for proximity bias (more students live closer to campus)
+- [ ] Dockerize code
+- [ ] Sentiment analysis in Ruby to judge bad experiences reported by students
+- [ ] Get images based on apartment addresses using Google APIs
+- [ ] Add form for collecting apartment satisfaction data to improve model accuracy
+- [ ] Automate malarkey removal from Google Form data
 
-**Contact djoksimo@uwaterloo.ca for Heroku, CI/CD, and Security information**
+**[Contact me](https://keybase.io/jokdanilo) for Heroku, CI/CD, and Security information**
