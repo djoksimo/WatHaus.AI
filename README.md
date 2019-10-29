@@ -30,15 +30,15 @@
 
 ### TODOs:
 
-- [] Deployment on Google Kubernetes Engine 
-- [] Web scrapers to collect student housing satisfaction data
-- [] Scale to include other Canadian universities and colleges
-- [] Improve UI/UX
-- [] Account for proximity bias (more students live closer to campus)
-- [] Dockerize code
-- [] Sentiment analysis in Ruby to judge bad experiences reported by students
-- [] Get images based on apartment addresses using Google APIs
-- [] Add form for collecting apartment satisfaction data to improve model accuracy
-- [] Automate malarkey removal from Google Form data
+- [ ] Deployment on Google Kubernetes Engine 
+- [ ] Web scrapers to collect student housing satisfaction data
+- [ ] Scale to include other Canadian universities and colleges
+- [ ] Improve UI/UX
+- [ ] Account for proximity bias (more students live closer to campus)
+- [ ] Dockerize code
+- [ ] Sentiment analysis in Ruby to judge bad experiences reported by students
+- [ ] Get images based on apartment addresses using Google APIs
+- [ ] Add form for collecting apartment satisfaction data to improve model accuracy
+- [ ] Automate malarkey removal from Google Form data
 
 **[Contact me](https://keybase.io/jokdanilo) for Heroku, CI/CD, and Security information**
